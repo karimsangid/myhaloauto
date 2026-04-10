@@ -225,14 +225,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ---------- Reviews Slider ----------
-  const track = document.getElementById('reviewsTrack');
-  const prevBtn = document.getElementById('prevReview');
-  const nextBtn = document.getElementById('nextReview');
+  // Wrapped in a re-initializable function so reviews.js can call it again
+  // after replacing the .review-card content with live Google data.
+  let reviewsSliderAbort = null;
 
-  if (track && prevBtn && nextBtn) {
+  function initReviewsSlider() {
+    if (reviewsSliderAbort) reviewsSliderAbort.abort();
+    reviewsSliderAbort = new AbortController();
+    const { signal } = reviewsSliderAbort;
+
+    const track = document.getElementById('reviewsTrack');
+    const prevBtn = document.getElementById('prevReview');
+    const nextBtn = document.getElementById('nextReview');
+    if (!track || !prevBtn || !nextBtn) return;
+
     let currentSlide = 0;
     const cards = track.querySelectorAll('.review-card');
     const totalCards = cards.length;
+    if (totalCards === 0) return;
+
+    // Reset transform when re-initializing
+    track.style.transform = 'translateX(0)';
 
     function getCardsPerView() {
       if (window.innerWidth <= 768) return 1;
@@ -256,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSlide--;
         updateSlider();
       }
-    });
+    }, { signal });
 
     nextBtn.addEventListener('click', () => {
       const perView = getCardsPerView();
@@ -265,9 +278,9 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSlide++;
         updateSlider();
       }
-    });
+    }, { signal });
 
-    window.addEventListener('resize', updateSlider);
+    window.addEventListener('resize', updateSlider, { signal });
 
     let autoSlide = setInterval(() => {
       const perView = getCardsPerView();
@@ -275,8 +288,9 @@ document.addEventListener('DOMContentLoaded', () => {
       currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
       updateSlider();
     }, 5000);
+    signal.addEventListener('abort', () => clearInterval(autoSlide));
 
-    track.addEventListener('mouseenter', () => clearInterval(autoSlide));
+    track.addEventListener('mouseenter', () => clearInterval(autoSlide), { signal });
     track.addEventListener('mouseleave', () => {
       autoSlide = setInterval(() => {
         const perView = getCardsPerView();
@@ -284,8 +298,12 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
         updateSlider();
       }, 5000);
-    });
+    }, { signal });
   }
+
+  initReviewsSlider();
+  // Expose so reviews.js can re-init after swapping in live Google data
+  window.__initReviewsSlider = initReviewsSlider;
 
   // ---------- FAQ Accordion ----------
   const faqItems = document.querySelectorAll('.faq-item');
