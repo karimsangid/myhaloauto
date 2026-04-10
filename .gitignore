@@ -1,0 +1,4 @@
+new-assets/
+__MACOSX/
+.vercel/
+.vercelignore
