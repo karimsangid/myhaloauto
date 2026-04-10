@@ -2,3 +2,6 @@ new-assets/
 __MACOSX/
 .vercel/
 .vercelignore
+
+# Local Netlify folder
+.netlify
