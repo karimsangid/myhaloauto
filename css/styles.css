@@ -1210,16 +1210,40 @@ h1, h2, h3, h4, h5, h6 {
 .reviews-slider {
   position: relative;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
 }
 
 .reviews-track {
+  --card-w: 380px;
+  --card-gap: 24px;
   display: flex;
-  gap: 24px;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: var(--card-gap);
+  width: max-content;
+  animation: scroll-reviews 60s linear infinite;
+  will-change: transform;
+}
+
+.reviews-slider:hover .reviews-track,
+.reviews-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-reviews {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc((var(--card-w) + var(--card-gap)) * -6)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reviews-track {
+    animation: none;
+  }
 }
 
 .review-card {
-  min-width: calc(33.333% - 16px);
+  width: var(--card-w);
+  min-width: var(--card-w);
+  flex-shrink: 0;
   background: var(--dark-2);
   border: 1px solid rgba(255,255,255,0.05);
   border-radius: var(--radius-lg);
@@ -1315,30 +1339,36 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--gray-400);
 }
 
-.reviews-controls {
+/* ---------- Review CTAs ---------- */
+.review-ctas {
   display: flex;
-  justify-content: center;
   gap: 16px;
-  margin-top: 40px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48px;
+  flex-wrap: wrap;
 }
 
-.review-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(200, 165, 78, 0.1);
-  border: 1px solid rgba(200, 165, 78, 0.2);
-  color: var(--primary);
-  cursor: pointer;
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
+.review-cta-btn {
+  min-width: 240px;
   justify-content: center;
 }
 
-.review-btn:hover {
-  background: var(--primary);
-  color: var(--dark);
+.review-cta-btn i {
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .review-ctas {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  .review-cta-btn {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 /* ---------- Service Area ---------- */
@@ -1796,8 +1826,9 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .review-card {
-    min-width: calc(50% - 12px);
+  .reviews-track {
+    --card-w: 320px;
+    animation-duration: 50s;
   }
 
   .reviews-summary {
@@ -2045,12 +2076,13 @@ h1, h2, h3, h4, h5, h6 {
 
   /* Reviews */
   .review-card {
-    min-width: 100%;
     padding: 24px;
   }
 
   .reviews-track {
-    gap: 16px;
+    --card-w: 280px;
+    --card-gap: 16px;
+    animation-duration: 40s;
   }
 
   .reviews-summary {
