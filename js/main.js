@@ -224,86 +224,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---------- Reviews Slider ----------
-  // Wrapped in a re-initializable function so reviews.js can call it again
-  // after replacing the .review-card content with live Google data.
-  let reviewsSliderAbort = null;
-
-  function initReviewsSlider() {
-    if (reviewsSliderAbort) reviewsSliderAbort.abort();
-    reviewsSliderAbort = new AbortController();
-    const { signal } = reviewsSliderAbort;
-
+  // ---------- Reviews Marquee ----------
+  // Pure CSS marquee animation. JS just clones each card once so the loop
+  // is seamless. Idempotent — safe to call again after reviews.js swaps in
+  // live Google data.
+  function setupReviewsMarquee() {
     const track = document.getElementById('reviewsTrack');
-    const prevBtn = document.getElementById('prevReview');
-    const nextBtn = document.getElementById('nextReview');
-    if (!track || !prevBtn || !nextBtn) return;
+    if (!track) return;
 
-    let currentSlide = 0;
-    const cards = track.querySelectorAll('.review-card');
-    const totalCards = cards.length;
-    if (totalCards === 0) return;
+    // Remove any existing clones from a previous setup
+    track.querySelectorAll('[data-clone]').forEach(el => el.remove());
 
-    // Reset transform when re-initializing
-    track.style.transform = 'translateX(0)';
-
-    function getCardsPerView() {
-      if (window.innerWidth <= 768) return 1;
-      if (window.innerWidth <= 1024) return 2;
-      return 3;
-    }
-
-    function updateSlider() {
-      const perView = getCardsPerView();
-      const maxSlide = Math.max(0, totalCards - perView);
-      currentSlide = Math.min(currentSlide, maxSlide);
-
-      const card = cards[0];
-      const gap = 24;
-      const cardWidth = card.offsetWidth + gap;
-      track.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-      if (currentSlide > 0) {
-        currentSlide--;
-        updateSlider();
-      }
-    }, { signal });
-
-    nextBtn.addEventListener('click', () => {
-      const perView = getCardsPerView();
-      const maxSlide = totalCards - perView;
-      if (currentSlide < maxSlide) {
-        currentSlide++;
-        updateSlider();
-      }
-    }, { signal });
-
-    window.addEventListener('resize', updateSlider, { signal });
-
-    let autoSlide = setInterval(() => {
-      const perView = getCardsPerView();
-      const maxSlide = totalCards - perView;
-      currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
-      updateSlider();
-    }, 5000);
-    signal.addEventListener('abort', () => clearInterval(autoSlide));
-
-    track.addEventListener('mouseenter', () => clearInterval(autoSlide), { signal });
-    track.addEventListener('mouseleave', () => {
-      autoSlide = setInterval(() => {
-        const perView = getCardsPerView();
-        const maxSlide = totalCards - perView;
-        currentSlide = currentSlide < maxSlide ? currentSlide + 1 : 0;
-        updateSlider();
-      }, 5000);
-    }, { signal });
+    // Clone every original card once and append for seamless looping
+    const originals = track.querySelectorAll('.review-card');
+    if (originals.length === 0) return;
+    originals.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute('data-clone', 'true');
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
   }
 
-  initReviewsSlider();
-  // Expose so reviews.js can re-init after swapping in live Google data
-  window.__initReviewsSlider = initReviewsSlider;
+  setupReviewsMarquee();
+  // Keep the old name exposed so reviews.js (which calls __initReviewsSlider
+  // after replacing card content) still works without modification.
+  window.__initReviewsSlider = setupReviewsMarquee;
+  window.__initReviewsMarquee = setupReviewsMarquee;
 
   // ---------- FAQ Accordion ----------
   const faqItems = document.querySelectorAll('.faq-item');
@@ -324,43 +271,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---------- Contact Form (Formspree) ----------
+  // ---------- Contact Form → SMS to Joseph ----------
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const btn = contactForm.querySelector('button[type="submit"]');
-      const originalText = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-      btn.disabled = true;
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const vehicle = document.getElementById('vehicle').value.trim();
+      const service = document.getElementById('service');
+      const serviceText = service.options[service.selectedIndex].text;
+      const location = document.getElementById('location').value.trim();
+      const message = document.getElementById('message').value.trim();
 
-      try {
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: new FormData(contactForm),
-          headers: { 'Accept': 'application/json' }
-        });
+      let body = `New Quote Request from myhaloauto.com\n\n`;
+      body += `Name: ${name}\n`;
+      body += `Phone: ${phone}\n`;
+      if (email) body += `Email: ${email}\n`;
+      body += `Vehicle: ${vehicle}\n`;
+      body += `Service: ${serviceText}\n`;
+      body += `Location: ${location}\n`;
+      if (message) body += `Issue: ${message}\n`;
 
-        if (response.ok) {
-          btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-          btn.style.background = '#22c55e';
-          contactForm.reset();
-        } else {
-          btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error — Try Again';
-          btn.style.background = '#ef4444';
-        }
-      } catch (err) {
-        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        window.location.href = `sms:+15719694256?body=${encodeURIComponent(body)}`;
+      } else {
+        // Desktop fallback — show confirmation with call/text prompt
+        const btn = contactForm.querySelector('button[type="submit"]');
+        btn.innerHTML = '<i class="fas fa-check"></i> Request Ready!';
         btn.style.background = '#22c55e';
-        contactForm.reset();
-      }
+        btn.disabled = true;
 
-      setTimeout(() => {
-        btn.innerHTML = originalText;
-        btn.style.background = '';
-        btn.disabled = false;
-      }, 3000);
+        const notice = document.createElement('div');
+        notice.style.cssText = 'margin-top:1rem;padding:1.25rem;background:#1a1a2e;border:1px solid var(--primary);border-radius:12px;text-align:center;color:#fff;line-height:1.6;';
+        notice.innerHTML = `
+          <p style="margin:0 0 0.5rem;font-size:1.1rem;font-weight:600;color:var(--primary);">Almost there!</p>
+          <p style="margin:0 0 1rem;">Text or call Joseph to complete your quote request:</p>
+          <a href="tel:+15719694256" style="display:inline-block;padding:0.75rem 1.5rem;background:var(--primary);color:#000;border-radius:8px;text-decoration:none;font-weight:600;font-size:1rem;">
+            <i class="fas fa-phone-alt"></i> (571) 969-4256
+          </a>
+          <p style="margin:1rem 0 0;font-size:0.85rem;opacity:0.7;">Mention your name (${name}) and vehicle (${vehicle}) when you call.</p>
+        `;
+        contactForm.appendChild(notice);
+      }
     });
   }
 
