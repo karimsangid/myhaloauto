@@ -271,6 +271,85 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ---------- Location Autocomplete ----------
+  const dmvCities = [
+    'Alexandria, VA','Annandale, VA','Arlington, VA','Ashburn, VA',
+    'Bethesda, MD','Bowie, MD','Burke, VA',
+    'Centreville, VA','Chantilly, VA','Cheverly, MD','College Park, MD','Columbia, MD',
+    'Dale City, VA','Dumfries, VA',
+    'Fairfax, VA','Falls Church, VA','Fort Washington, MD','Frederick, MD','Fredericksburg, VA',
+    'Gainesville, VA','Germantown, MD','Glen Burnie, MD','Greenbelt, MD',
+    'Haymarket, VA','Herndon, VA','Hyattsville, MD',
+    'Kensington, MD',
+    'Lake Ridge, VA','Landover, MD','Largo, MD','Laurel, MD','Leesburg, VA','Lorton, VA',
+    'Manassas, VA','McLean, VA','Merrifield, VA',
+    'Oakton, VA','Occoquan, VA',
+    'Potomac, MD','Prince Frederick, MD',
+    'Reston, VA','Rockville, MD','Rosslyn, VA',
+    'Silver Spring, MD','Springfield, VA','Stafford, VA','Sterling, VA','Suitland, MD',
+    'Takoma Park, MD','Tysons, VA',
+    'Upper Marlboro, MD',
+    'Vienna, VA',
+    'Washington, DC','Woodbridge, VA','Woodlawn, VA',
+    'Other'
+  ];
+
+  const locationInput = document.getElementById('location');
+  const locationDropdown = document.getElementById('locationDropdown');
+
+  if (locationInput && locationDropdown) {
+    let highlightedIndex = -1;
+
+    function showSuggestions(query) {
+      const q = query.toLowerCase().trim();
+      locationDropdown.innerHTML = '';
+      highlightedIndex = -1;
+
+      if (!q) { locationDropdown.classList.remove('active'); return; }
+
+      const matches = dmvCities.filter(c => c.toLowerCase().includes(q));
+      if (matches.length === 0) { locationDropdown.classList.remove('active'); return; }
+
+      matches.forEach((city, i) => {
+        const li = document.createElement('li');
+        li.textContent = city;
+        li.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          locationInput.value = city;
+          locationDropdown.classList.remove('active');
+        });
+        locationDropdown.appendChild(li);
+      });
+      locationDropdown.classList.add('active');
+    }
+
+    locationInput.addEventListener('input', () => showSuggestions(locationInput.value));
+    locationInput.addEventListener('focus', () => { if (locationInput.value) showSuggestions(locationInput.value); });
+    locationInput.addEventListener('blur', () => { setTimeout(() => locationDropdown.classList.remove('active'), 150); });
+
+    locationInput.addEventListener('keydown', (e) => {
+      const items = locationDropdown.querySelectorAll('li');
+      if (!items.length) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        highlightedIndex = Math.min(highlightedIndex + 1, items.length - 1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        highlightedIndex = Math.max(highlightedIndex - 1, 0);
+      } else if (e.key === 'Enter' && highlightedIndex >= 0) {
+        e.preventDefault();
+        locationInput.value = items[highlightedIndex].textContent;
+        locationDropdown.classList.remove('active');
+        return;
+      } else { return; }
+
+      items.forEach(li => li.classList.remove('highlighted'));
+      items[highlightedIndex].classList.add('highlighted');
+      items[highlightedIndex].scrollIntoView({ block: 'nearest' });
+    });
+  }
+
   // ---------- Contact Form → SMS to Joseph ----------
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
