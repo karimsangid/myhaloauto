@@ -5,3 +5,10 @@ __MACOSX/
 
 # Local Netlify folder
 .netlify
+.env
+.env.*
+*.local
+node_modules/
+.next/
+/out/
+/dist/
