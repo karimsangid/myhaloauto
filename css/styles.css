@@ -1442,15 +1442,89 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .area-map {
+  position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
   height: 500px;
   box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(200, 165, 78, 0.28);
+}
+
+/* subtle gold inner frame so the embed reads as a finished, branded element */
+.area-map::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 0 0 1px rgba(200, 165, 78, 0.18);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .map-placeholder {
+  position: relative;
   width: 100%;
   height: 100%;
+}
+
+.map-placeholder iframe {
+  filter: grayscale(0.25) contrast(1.04);
+}
+
+.map-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 18px 11px 12px;
+  background: rgba(10, 10, 10, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(200, 165, 78, 0.4);
+  border-radius: 14px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.map-badge-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.map-badge-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.map-badge-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+
+.map-badge-sub {
+  font-size: 12px;
+  color: var(--primary-light);
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 600px) {
+  .map-badge {
+    top: 12px;
+    left: 12px;
+    padding: 8px 14px 8px 9px;
+    gap: 9px;
+  }
+  .map-badge-logo { width: 34px; height: 34px; }
+  .map-badge-title { font-size: 13px; }
+  .map-badge-sub { font-size: 11px; }
 }
 
 /* ---------- CTA Section ---------- */
