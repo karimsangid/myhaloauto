@@ -2,8 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://myhaloauto.com/</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/fleet-services/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/services/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/services/engine-repair/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/services/brake-repair/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/services/transmission-clutch/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/services/electrical-diagnostics/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/services/cooling-system/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/services/gaskets-seals/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/services/suspension-steering/</loc>
+    <lastmod>2026-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/services/maintenance/</loc>
+    <lastmod>2026-09-30</lastmod>
   </url>
 </urlset>

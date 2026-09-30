@@ -30,7 +30,7 @@
    ============================================================ */
 
 const REVIEWS_CONFIG = {
-  // ⚠️ Paste your Google Cloud API key here:
+  // NOTE: Paste your Google Cloud API key here:
   apiKey: 'YOUR_GOOGLE_MAPS_API_KEY',
 
   // Either set placeId directly (faster, no search) OR leave blank

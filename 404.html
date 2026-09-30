@@ -2,91 +2,143 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Page Not Found | My Halo Auto</title>
+  <meta name="description" content="The page you're looking for doesn't exist or has been moved.">
   <meta name="robots" content="noindex">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="theme-color" content="#0a0a0a">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0a0a0a;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      text-align: center;
-      padding: 24px;
-    }
-    .container { max-width: 560px; }
-    .error-code {
-      font-family: 'Outfit', sans-serif;
-      font-size: 120px;
-      font-weight: 800;
-      color: #c8a54e;
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-    p {
-      color: #999;
-      font-size: 16px;
-      line-height: 1.7;
-      margin-bottom: 32px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 32px;
-      background: linear-gradient(135deg, #c8a54e, #a88a3a);
-      color: #0a0a0a;
-      font-family: 'Outfit', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(200, 165, 78, 0.2);
-    }
-    .links {
-      margin-top: 24px;
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-    }
-    .links a {
-      color: #c8a54e;
-      text-decoration: none;
-      font-size: 14px;
-    }
-    .links a:hover { color: #e8d391; }
-  </style>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+  <link rel="stylesheet" href="/css/styles.css?v=7">
+  <link rel="stylesheet" href="/css/pages.css?v=2">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <div class="container">
-    <div class="error-code">404</div>
-    <h1>Page Not Found</h1>
-    <p>The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
-    <a href="/" class="btn"><i class="fas fa-home"></i> Back to Home</a>
-    <div class="links">
-      <a href="/#services">Services</a>
-      <a href="/#contact">Contact Us</a>
-      <a href="tel:+15719694256">Call (571) 969-4256</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav id="navbar" class="navbar" aria-label="Main">
+    <div class="nav-container">
+      <a href="/" class="nav-logo" aria-label="My Halo Auto, home">
+        <img src="/images/logo-mark.png" alt="" class="nav-logo-img" width="40" height="40">
+        <span class="logo-text">MY HALO <span class="accent">AUTO</span></span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="/services/" class="nav-link">Services</a></li>
+        <li><a href="/fleet-services/" class="nav-link">Fleet</a></li>
+        <li><a href="/#gallery" class="nav-link">Our Work</a></li>
+        <li><a href="/#reviews" class="nav-link">Reviews</a></li>
+        <li><a href="/#service-area" class="nav-link">Service Area</a></li>
+        <li><a href="/#faq" class="nav-link">FAQ</a></li>
+        <li class="nav-phone-item"><a href="tel:+15719694256" class="nav-phone"><i class="fas fa-phone-alt" aria-hidden="true"></i> (571) 969-4256</a></li>
+        <li class="nav-cta-item"><a href="/#contact" class="nav-link cta-link">Get a Quote</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
     </div>
+    <div class="nav-backdrop" id="navBackdrop"></div>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero page-hero--404">
+      <div class="container page-hero__inner">
+        <p class="error-mark" aria-hidden="true">404</p>
+        <p class="eyebrow">Error 404</p>
+        <h1 class="page-hero__title">Page Not Found</h1>
+        <p class="page-hero__lede">The page you're looking for doesn't exist or has been moved.</p>
+        <div class="btn-row">
+          <a href="/" class="btn btn-primary btn-lg"><svg class="ico" aria-hidden="true" focusable="false"><use href="/images/icons.svg#i-home"></use></svg> Back to Home</a>
+          <a href="/services/" class="btn btn-outline btn-lg">Browse Services</a>
+          <a href="/fleet-services/" class="btn btn-ghost btn-lg"><svg class="ico" aria-hidden="true" focusable="false"><use href="/images/icons.svg#i-truck"></use></svg> Fleet Services</a>
+        </div>
+        <p class="error-call"><a href="tel:+15719694256" class="link-arrow"><i class="fas fa-phone-alt" aria-hidden="true"></i> Call (571) 969-4256</a></p>
+      </div>
+    </header>
+
+    <section class="footnote-section" aria-label="Mobile service disclaimer">
+      <div class="container">
+        <p class="footnote-text" id="disclaimer">
+          <strong>*Mobile Service Disclaimer:</strong> Mobile service requires adequate workspace and a suitable area for the technician to safely perform repairs (e.g., a flat driveway, parking lot, or garage). Engine swaps, exhaust work, and other major services cannot be performed as mobile service and require a consultation. We do not offer bodywork, performance upgrades, or coilover installation. Exhaust and custom fabrication services require a prior consultation. My Halo Auto specializes in automotive <strong>maintenance and repair</strong>, not performance enhancement.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo" aria-label="My Halo Auto, home">
+            <img src="/images/logo-mark.png" alt="" class="nav-logo-img" width="40" height="40" loading="lazy">
+            <span class="logo-text">MY HALO <span class="accent">AUTO</span></span>
+          </a>
+          <p>ASE-certified mobile maintenance and repair for personal and fleet vehicles across Washington DC, Maryland and Virginia.</p>
+          <div class="footer-socials">
+            <a href="https://instagram.com/myhalo.auto" target="_blank" rel="noopener" aria-label="My Halo Auto on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://maps.app.goo.gl/rKe13m5ULv6c1C4z5?g_st=ic" target="_blank" rel="noopener" aria-label="My Halo Auto reviews on Google"><i class="fab fa-google" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <p class="footer-title">Services</p>
+          <ul>
+            <li><a href="/services/engine-repair/">Engine Repair &amp; Diagnostics</a></li>
+            <li><a href="/services/brake-repair/">Brake Service</a></li>
+            <li><a href="/services/transmission-clutch/">Transmission &amp; Clutch</a></li>
+            <li><a href="/services/electrical-diagnostics/">Electrical &amp; Diagnostics</a></li>
+            <li><a href="/services/cooling-system/">Cooling &amp; Radiator</a></li>
+            <li><a href="/services/gaskets-seals/">Gaskets &amp; Seals</a></li>
+            <li><a href="/services/suspension-steering/">Suspension &amp; Steering</a></li>
+            <li><a href="/services/maintenance/">General Maintenance</a></li>
+            <li><a href="/services/#engine-swaps">Engine Swaps*</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <p class="footer-title">Company</p>
+          <ul>
+            <li><a href="/fleet-services/">Fleet Services</a></li>
+            <li><a href="/services/">All Services</a></li>
+            <li><a href="/#gallery">Our Work</a></li>
+            <li><a href="/#reviews">Reviews</a></li>
+            <li><a href="/#service-area">Service Area</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/#contact">Get a Quote</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <p class="footer-title">Contact</p>
+          <ul class="footer-contact">
+            <li><a href="tel:+15719694256"><i class="fas fa-phone-alt" aria-hidden="true"></i> (571) 969-4256</a></li>
+            <li><a href="mailto:myhaloauto@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> myhaloauto@gmail.com</a></li>
+            <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Washington DC, Maryland &amp; Virginia</li>
+            <li><i class="fas fa-clock" aria-hidden="true"></i> Mon–Sat 7AM–7PM · Sunday by request</li>
+            <li><i class="fas fa-reply" aria-hidden="true"></i> We typically respond within 12 hours during business hours</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> My Halo Auto. All rights reserved.</p>
+        <p style="font-size:10px;opacity:0.4;margin-top:4px;letter-spacing:0.04em;">Created by Hummus Development &middot; 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="action-bar" role="region" aria-label="Quick contact">
+    <a href="tel:+15719694256" class="action-bar__btn action-bar__btn--call"><i class="fas fa-phone-alt" aria-hidden="true"></i><span>Call</span></a>
+    <a href="sms:+15719694256?body=Hi%2C%20I%20need%20a%20quote%20for%20auto%20repair." class="action-bar__btn"><i class="fas fa-comment-dots" aria-hidden="true"></i><span>Text</span></a>
+    <a href="/#contact" class="action-bar__btn action-bar__btn--quote"><i class="fas fa-file-lines" aria-hidden="true"></i><span>Quote</span></a>
   </div>
-  <footer style="text-align:center;padding:16px;font-size:10px;opacity:0.4;letter-spacing:0.04em;">Created by Hummus Development &middot; 2026</footer>
+  <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top"><i class="fas fa-chevron-up" aria-hidden="true"></i></button>
+  <script src="/js/main.js?v=7" defer></script>
 </body>
 </html>
