@@ -1,23 +1,54 @@
 # My Halo Auto
 
-> My Halo Auto is a mobile auto maintenance and repair service for personal and fleet vehicles in Washington DC, Maryland and Virginia (the DMV). An ASE-certified technician with 5+ years of experience performs the work at the customer's location (home, office, lot, yard or job site) where there is adequate, safe workspace. My Halo Auto specializes in maintenance and repair, not performance enhancement.
+> My Halo Auto is a mobile auto repair and maintenance service for personal and fleet vehicles in Washington DC, Maryland and Northern Virginia (the DMV). An ASE-certified technician with 5+ years of hands-on experience performs the work at the customer's location (home, office, lot, yard or job site) where there is adequate, safe workspace. My Halo Auto specializes in maintenance and repair, not performance enhancement.
+
+Last updated: 2026-10-01
 
 ## Key facts
 
 - Business: My Halo Auto
 - Type: Mobile auto maintenance and repair (we come to you)
+- Owner: Joseph, ASE-certified technician, 5+ years hands-on experience
 - Certification: ASE certified
 - Experience: 5+ years
 - Vehicles: Personal and fleet/company vehicles, all makes and models (domestic, import, European)
 - Fleet vehicles: company and fleet vehicles such as work vans, pickups, sedans and SUVs; service on-site at your lot, yard or job site where there is adequate, safe workspace; the same service catalog as personal vehicles; scheduling arranged with your fleet manager; a single ASE-certified point of contact; an itemized invoice for each vehicle
-- Service area: Washington DC, Maryland, Virginia
+- No towing needed: the technician comes to the vehicle at your home, office, lot, yard or job site
+- Emergency: emergency mobile service available; call (571) 969-4256
+- Service area: Washington DC; Maryland (towns in Montgomery and Prince George's counties, plus Columbia, Glen Burnie, Frederick, Prince Frederick); Northern Virginia (plus Stafford and Fredericksburg). Full town list below
 - Hours: Mon–Sat 7AM–7PM; Sunday by request
 - Response: Typically within 12 hours during business hours
-- Quotes: call, text or use the website form with the vehicle's year, make and model and a description of the issue; transparent quote, no hidden fees
 - Standards: every fastener torqued to manufacturer specification; OEM repair procedures
-- Google rating: 5.0 from 6 Google reviews
+- Google rating: 5.0 (Google Business Profile, as of 2026-10-01)
 - Phone: (571) 969-4256
 - Email: myhaloauto@gmail.com
+
+## How to book
+
+- Call or text (571) 969-4256, email myhaloauto@gmail.com, or use the form at https://myhaloauto.com/#contact
+- Include the vehicle's year, make and model and a description of the issue
+- You get a transparent quote with no hidden fees; we explain every repair before we start, and you approve the work
+- We typically respond within 12 hours during business hours
+
+## Service area
+
+Washington, DC
+- Washington, DC, including Northwest DC, Northeast DC, Southeast DC, Southwest DC, Capitol Hill and Georgetown
+
+Maryland
+- Montgomery County: Bethesda, Germantown, Kensington, Potomac, Rockville, Silver Spring, Takoma Park
+- Prince George's County: Bowie, Cheverly, College Park, Fort Washington, Greenbelt, Hyattsville, Landover, Largo, Laurel, Suitland, Upper Marlboro
+- Elsewhere in Maryland: Columbia (Howard County), Glen Burnie (Anne Arundel County), Frederick (Frederick County), Prince Frederick (Calvert County)
+
+Northern Virginia
+- Arlington County: Arlington, Rosslyn
+- City of Alexandria: Alexandria
+- Fairfax County, Fairfax and Falls Church: Annandale, Burke, Centreville, Chantilly, Fairfax, Falls Church, Herndon, Lorton, McLean, Merrifield, Oakton, Reston, Springfield, Tysons, Vienna, Woodlawn
+- Loudoun County: Ashburn, Leesburg, Sterling
+- Prince William County and Manassas: Dale City, Dumfries, Gainesville, Haymarket, Lake Ridge, Manassas, Occoquan, Woodbridge
+- Further south: Stafford, Fredericksburg
+
+Not listed? Choose Other on the quote form or call or text (571) 969-4256.
 
 ## Not offered / by consultation
 
@@ -27,7 +58,10 @@
 
 ## Pages
 
-- [Home](https://myhaloauto.com/): ASE-certified mobile mechanic for personal and fleet vehicles in DC, Maryland and Virginia; reviews, service area, FAQ and quote form
+- [Home](https://myhaloauto.com/): ASE-certified mobile mechanic for personal and fleet vehicles in DC, Maryland and Northern Virginia; reviews, service area, FAQ and quote form
+- [Washington, DC](https://myhaloauto.com/washington-dc/): mobile auto repair in Washington, DC: Northwest, Northeast, Southeast and Southwest DC, Capitol Hill and Georgetown; services, how mobile service works there, FAQ
+- [Northern Virginia](https://myhaloauto.com/northern-virginia/): mobile auto repair in Northern Virginia: every town served in Arlington, Alexandria, Fairfax, Loudoun and Prince William, plus Stafford and Fredericksburg; services, FAQ
+- [Maryland](https://myhaloauto.com/maryland/): mobile auto repair in Maryland: every town served in Montgomery and Prince George's counties, plus Columbia, Glen Burnie, Frederick and Prince Frederick; services, FAQ
 - [Fleet Services](https://myhaloauto.com/fleet-services/): on-site maintenance and repair for company vans, pickups, sedans and SUVs, scheduled with your fleet manager, itemized invoice per vehicle
 - [All Services](https://myhaloauto.com/services/): the full mobile service catalog, plus engine swaps (by consultation, not mobile) and what is not offered
 - [Engine Repair & Diagnostics](https://myhaloauto.com/services/engine-repair/): full engine diagnostics, timing belt/chain replacement, head gasket repair, oil leak diagnosis and repair
@@ -43,3 +77,5 @@
 ## Contact
 
 Call or text (571) 969-4256, email myhaloauto@gmail.com, or request a quote at https://myhaloauto.com/#contact. Instagram: https://instagram.com/myhalo.auto. Google reviews: https://maps.app.goo.gl/rKe13m5ULv6c1C4z5?g_st=ic
+Google Maps listing: https://www.google.com/maps?cid=9481235155550204168
+Full text of every page: https://myhaloauto.com/llms-full.txt

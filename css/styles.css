@@ -87,6 +87,7 @@ body{
 }
 body.nav-open{overflow:hidden}
 img,svg,video,iframe{display:block;max-width:100%}
+picture{display:contents}
 img{height:auto}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit;color:inherit}
@@ -302,7 +303,7 @@ main p a:not(.btn):not(.textlink):not(.fn-ref),main dd a,main li>a:not(.btn):not
 .index__frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:inset(100% 0 0 0);transition:clip-path .5s var(--ease)}
 .index__frame img.is-active{clip-path:inset(0);z-index:2}
 .index__frame img.was-active{clip-path:inset(0);z-index:1;transition:none}
-html:not(.js) .index__frame img:first-child{clip-path:inset(0)}
+html:not(.js) .index__frame>img:first-child,html:not(.js) .index__frame>picture:first-child>img{clip-path:inset(0)}
 
 /* Steps */
 .steps{display:grid;gap:0;border-top:1px solid var(--rule)}
@@ -342,6 +343,8 @@ html:not(.js) .index__frame img:first-child{clip-path:inset(0)}
 .states h3{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(1.6rem,1.2rem + 1.6vw,2.6rem);line-height:1;padding-bottom:12px;border-bottom:2px solid var(--rule)}
 .states ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px}
 .states li{padding:10px 0;border-bottom:1px solid var(--rule-soft);font-weight:500;font-size:1.0625rem;line-height:1.35}
+.states h3 a{color:var(--fg);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;text-decoration-color:var(--fg-accent)}
+.states h3 a:hover{text-decoration-color:var(--fg)}
 
 /* Tap-to-load map */
 .map-tap{position:relative;aspect-ratio:4/3;border:2px solid var(--rule);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:16px;padding:24px;overflow:hidden}
@@ -478,7 +481,7 @@ html.shift .navbar{background-color:var(--page-bg);color:var(--fg)}
 .footer a{color:var(--chalk-2)}
 .footer a:hover{color:var(--chalk)}
 .footer :focus-visible{outline-color:var(--gold)}
-.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.3fr;gap:40px}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr 1.3fr;gap:40px}
 .footer-brand p{font-size:.9375rem;line-height:1.6;max-width:36ch}
 .footer-socials{display:grid;gap:4px;margin-top:20px}
 .footer-socials a,.footer-contact a,.footer-contact li{display:inline-flex;align-items:flex-start;gap:10px}
@@ -589,9 +592,9 @@ html.shift .about__inset .shot__img{border-color:var(--page-bg);transition:borde
 .js .hero h1,.js .page-hero h1{animation:rise .6s var(--ease) both}
 .js [data-reveal="door"]{opacity:1;transform:none}
 .js [data-reveal="door"] :is(.shot__img,.vid__box,.index__frame){clip-path:inset(100% 0 0 0);transition:clip-path .9s var(--ease);transition-delay:calc(var(--d,0) * 60ms)}
-.js [data-reveal="door"] :is(.shot__img,.vid__box)>:is(img,video){transform:scale(1.08);transition:transform 1.2s var(--ease);transition-delay:calc(var(--d,0) * 60ms)}
+.js [data-reveal="door"] :is(.shot__img,.vid__box)>:is(img,video),.js [data-reveal="door"] .shot__img>picture>img{transform:scale(1.08);transition:transform 1.2s var(--ease);transition-delay:calc(var(--d,0) * 60ms)}
 .js [data-reveal="door"].is-visible :is(.shot__img,.vid__box,.index__frame){clip-path:inset(0)}
-.js [data-reveal="door"].is-visible :is(.shot__img,.vid__box)>:is(img,video){transform:none}
+.js [data-reveal="door"].is-visible :is(.shot__img,.vid__box)>:is(img,video),.js [data-reveal="door"].is-visible .shot__img>picture>img{transform:none}
 .js .tag[data-reveal="tag"],.js [data-reveal="door"] .tag{opacity:1;transform:translateY(50%) rotate(-9deg);transition:transform .6s cubic-bezier(.3,1.4,.5,1) .45s}
 .js .is-visible .tag,.js .tag[data-reveal="tag"].is-visible{transform:translateY(50%) rotate(-2deg)}
 .js .sheet-grid figure.has-tag[data-reveal="door"] .tag{transform:translateY(-50%) rotate(-9deg)}
@@ -799,7 +802,7 @@ html.shift .about__inset .shot__img{border-color:var(--page-bg);transition:borde
   *,*::before,*::after{animation:none!important;transition-duration:.001ms!important;transition-delay:0s!important}
   .js [data-reveal],.js h2[data-reveal]{opacity:1;transform:none;clip-path:none}
   .js [data-reveal] :is(.shot__img,.vid__box,.index__frame){clip-path:none}
-  .js [data-reveal] :is(.shot__img,.vid__box)>:is(img,video){transform:none}
+  .js [data-reveal] :is(.shot__img,.vid__box)>:is(img,video),.js [data-reveal] .shot__img>picture>img{transform:none}
   .js .hero h1,.js .page-hero h1{clip-path:none;transform:none}
   .js .tag,.tag{transform:translateY(50%) rotate(-2deg)}
   .js .sheet-grid figure.has-tag .tag{transform:translateY(-50%) rotate(-2deg)}

@@ -59,6 +59,11 @@ main .signs__more a{color:var(--fg);font-weight:600;text-decoration-color:var(--
 .fleet-line__inner{display:grid;gap:18px;justify-items:start}
 .fleet-line__text{font-size:clamp(1.125rem,1rem + .5vw,1.35rem);font-weight:500;line-height:1.45;max-width:62ch}
 
+/* ---------- Regional pages (/washington-dc/, /maryland/, /northern-virginia/) ---------- */
+.fleet-line__links{display:flex;flex-wrap:wrap;gap:12px 32px}
+.area .states--region{margin-top:0}
+.area .states--region+.area__foot{margin-top:28px}
+
 /* ---------- Related / link lists ---------- */
 .index__list--compact .index__row{min-height:76px;padding:14px 0}
 .index__list--compact .index__name{font-size:clamp(1.45rem,1.1rem + 1.1vw,2.15rem)}
@@ -233,7 +238,7 @@ main .closer__urgent a{color:var(--fg);font-weight:600}
 .tile{display:block;color:var(--fg)}
 .tile__img{--ar:4/3}
 .tile__img img{transition:transform .6s var(--ease)}
-.js .tile.is-visible:hover .tile__img>img,.tile:hover .tile__img>img{transform:scale(1.04)}
+.js .tile.is-visible:hover .tile__img>img,.tile:hover .tile__img>img,.js .tile.is-visible:hover .tile__img>picture>img,.tile:hover .tile__img>picture>img{transform:scale(1.04)}
 .tile__name{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding-bottom:12px;border-bottom:2px solid var(--rule);
   font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(1.4rem,1.1rem + 1vw,2rem);line-height:1}
 .tile__arrow{font-size:24px;transition:transform .3s var(--ease)}
@@ -243,7 +248,7 @@ main .closer__urgent a{color:var(--fg);font-weight:600}
 /* Fleet vehicles: full-bleed photo strip with the four vehicle types set large */
 .vstrip{padding-bottom:0}
 .vstrip__band{position:relative;margin-top:clamp(32px,3vw + 16px,56px);min-height:clamp(440px,64vh,660px);display:flex;align-items:flex-end;overflow:hidden;color:var(--chalk)}
-.vstrip__band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vstrip__band>img,.vstrip__band>picture>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .vstrip__band::before{content:"";position:absolute;inset:0;z-index:1;background:rgba(21,42,34,.78)}
 .vstrip__list{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .vstrip__list>li{padding:22px var(--gutter) 30px;border-top:1px solid rgba(244,238,227,.4)}
@@ -269,6 +274,28 @@ main .closer__urgent a{color:var(--fg);font-weight:600}
 }
 @supports (animation-timeline: view()){
   @media (min-width:900px) and (pointer:fine) and (prefers-reduced-motion:no-preference){
-    .vstrip__band>img{animation:drift linear both;animation-timeline:view();animation-range:cover}
+    .vstrip__band>img,.vstrip__band>picture>img{animation:drift linear both;animation-timeline:view();animation-range:cover}
   }
+}
+
+/* Regional town lists: long county headings need full-width columns on phones */
+@media (max-width:599.98px){
+  .states--region{grid-template-columns:1fr;gap:28px}
+  .states--region h3{min-height:0;font-size:1.6rem;padding-bottom:10px}
+  .states--region ul{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px}
+}
+@media (min-width:600px) and (max-width:1023.98px){
+  .states--region{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 40px}
+}
+@media (min-width:1024px){
+  .states--n2{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.states ul.states__one{grid-template-columns:1fr}
+/* six uneven county groups (Northern Virginia): flow into balanced columns instead of rows */
+@media (min-width:600px){
+  .states--n6{display:block;columns:2;column-gap:40px}
+  .states--n6 .states__col{break-inside:avoid;margin-bottom:32px}
+}
+@media (min-width:1024px){
+  .states--n6{columns:3}
 }

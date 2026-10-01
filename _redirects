@@ -1,1 +1,6 @@
+# Netlify default hostname -> apex
+https://myhaloauto.netlify.app/*  https://myhaloauto.com/:splat  301!
+http://myhaloauto.netlify.app/*   https://myhaloauto.com/:splat  301!
+
 /new-assets/*   /404.html  404!
+/js/reviews.js  /404.html  404!

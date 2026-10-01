@@ -1,47 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://myhaloauto.com/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/engine-accessory-drive-closeup-wide.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/suspension-hub-service.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/timing-cover-gasket-old.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/suv-driveway-service-hood-open-wide.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/cv-axle-steering.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/new-hub-bearing.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/engine-bay-teardown.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/water-pump-gaskets-new-vs-old.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/engine-front-timing-cover.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/wiring-harness-connectors.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/rear-coil-spring-shock.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/engine-block-timing.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/timing-cover-seal.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/rear-suspension-leaf-spring.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/front-suspension-assembly.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/tacoma-parking-lot-service.jpeg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/washington-dc/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/tahoe-driveway-service.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/brake-lines-removed.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/engine-front-pulleys.jpeg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/northern-virginia/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/tacoma-parking-lot-service.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/cv-axle-steering.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/timing-cover-gasket-detail.jpeg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://myhaloauto.com/maryland/</loc>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/suspension-hub-service.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/brake-lines-closeup.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/new-hub-bearing.jpeg</image:loc></image:image>
   </url>
   <url>
     <loc>https://myhaloauto.com/fleet-services/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/tacoma-side-tools.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/suspension-hub-service.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/driveshafts-on-table.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://myhaloauto.com/services/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/suv-driveway-service-hood-open-wide.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/engine-front-timing-cover.jpeg</image:loc></image:image>
   </url>
   <url>
     <loc>https://myhaloauto.com/services/engine-repair/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/mercedes-engine-bay.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/belt-tensioner-on-the-job.jpg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/band-engine-timing-cover.jpg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/engine-accessory-drive-closeup.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/engine-block-timing.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/engine-bay-teardown.jpeg</image:loc></image:image>
   </url>
   <url>
     <loc>https://myhaloauto.com/services/brake-repair/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/chevy-hub-brake.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/tacoma-parking-lot-service.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/band-front-suspension.jpg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/new-hub-bearing.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/suspension-hub-service.jpeg</image:loc></image:image>
   </url>
   <url>
     <loc>https://myhaloauto.com/services/transmission-clutch/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/cv-axles-removed.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/cv-axle-undercarriage.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/band-driveshafts.jpg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/cv-axle-steering.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/driveshaft-centre-bearings.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://myhaloauto.com/services/electrical-diagnostics/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/wiring-harness-connectors.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/diagnostic-scanner-tablet.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/band-wiring-harness.jpg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/engine-bay-teardown.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/ecu-board-diagnostics.jpeg</image:loc></image:image>
   </url>
   <url>
     <loc>https://myhaloauto.com/services/cooling-system/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/radiator-leak-detail.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/mercedes-engine-bay.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/band-radiator-core.jpg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/water-pump-gaskets-comparison.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/radiator-damage-closeup.jpeg</image:loc></image:image>
   </url>
   <url>
     <loc>https://myhaloauto.com/services/gaskets-seals/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/timing-cover-gasket-old.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/timing-cover-gasket-compare.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/band-timing-cover-gasket.jpg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/timing-cover-gasket-worn.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/timing-cover-seal.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/water-pump-gaskets-new-vs-old.jpeg</image:loc></image:image>
   </url>
   <url>
     <loc>https://myhaloauto.com/services/suspension-steering/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/suspension-overhaul.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/undercarriage-suspension-work.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/cv-axle-steering.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/coil-spring-shock.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/front-suspension-assembly.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/rear-suspension-leaf-spring.jpeg</image:loc></image:image>
   </url>
   <url>
     <loc>https://myhaloauto.com/services/maintenance/</loc>
-    <lastmod>2026-09-30</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <image:image><image:loc>https://myhaloauto.com/images/tacoma-parking-lot-service.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/suv-driveway-service-hood-open.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/engine-accessory-drive-closeup-wide.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/new-hub-bearing.jpeg</image:loc></image:image>
+    <image:image><image:loc>https://myhaloauto.com/images/diagnostic-scanner-tablet.jpeg</image:loc></image:image>
   </url>
 </urlset>

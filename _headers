@@ -1,0 +1,41 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: frame-ancestors 'self'
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
+
+/css/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/js/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/images/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+/media/*
+  Cache-Control: public, max-age=2592000
+
+/favicon.ico
+  Cache-Control: public, max-age=604800
+
+/favicon-32x32.png
+  Cache-Control: public, max-age=604800
+
+/favicon-16x16.png
+  Cache-Control: public, max-age=604800
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=604800
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  X-Robots-Tag: noindex
+
+/d25ba2066c4c3c5d711af9a9a972e3e3.txt
+  Content-Type: text/plain; charset=utf-8
+  X-Robots-Tag: noindex
