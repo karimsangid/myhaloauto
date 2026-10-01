@@ -315,21 +315,8 @@ html:not(.js) .index__frame img:first-child{clip-path:inset(0)}
 .step__title{margin-top:.2em}
 .step p{grid-column:2;margin-top:6px;color:var(--fg)}
 .step p a{font-weight:600}
-
-/* Halo ring */
-.halo{position:relative;display:inline-block;padding:0 .18em}
-.halo__ring{
-  position:absolute;inset:-18% -14%;width:128%;height:136%;max-width:none;overflow:visible;pointer-events:none;
-  fill:none;stroke:var(--halo);stroke-width:2.5;stroke-linecap:round;
-  stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s var(--ease) .35s;
-}
-/* no non-scaling-stroke: Chrome then measures pathLength dashes in the wrong space and draws only part of the ring */
-.halo__ring path{vector-effect:none}
-.is-visible .halo__ring,html:not(.js) .halo__ring{stroke-dashoffset:0}
-
-/* Phone number, van-door size; its halo sits above the digits */
-.phone-big .halo .halo__ring{inset:auto;left:10%;width:80%;top:-46%;height:44%;stroke-width:6}
-.phone-big{margin-top:.62em;
+/* Phone number, van-door size */
+.phone-big{margin-top:.3em;
   display:inline-block;font-family:var(--f-display);font-weight:800;font-variation-settings:'opsz' 72;
   font-size:clamp(2.75rem,1.2rem + 6.4vw,6.5rem);line-height:.9;font-variant-numeric:tabular-nums;
   color:var(--fg);white-space:nowrap;letter-spacing:.005em;
@@ -814,7 +801,6 @@ html.shift .about__inset .shot__img{border-color:var(--page-bg);transition:borde
   .js [data-reveal] :is(.shot__img,.vid__box,.index__frame){clip-path:none}
   .js [data-reveal] :is(.shot__img,.vid__box)>:is(img,video){transform:none}
   .js .hero h1,.js .page-hero h1{clip-path:none;transform:none}
-  .halo__ring{stroke-dashoffset:0}
   .js .tag,.tag{transform:translateY(50%) rotate(-2deg)}
   .js .sheet-grid figure.has-tag .tag{transform:translateY(-50%) rotate(-2deg)}
   .index__row .index__name,.index__row .index__arrow{transform:none!important}
