@@ -15,9 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const ICON = (name) => `<svg class="ico" aria-hidden="true" focusable="false"><use href="/images/icons.svg#i-${name}"></use></svg>`;
 
   // ---------- Colour shift ----------
-  // One page colour at a time; it tweens to the colour of whichever block
-  // crosses the middle of the screen. Text tone flips when the tweening colour
-  // crosses the luminance where ink and chalk text have equal contrast.
+  // The page colour follows the scroll. As the edge between two blocks travels
+  // through the middle of the screen, the colour blends from one block's colour
+  // to the next (mixed in linear light), so it changes as gradually as you scroll.
+  // Text tone flips where ink and chalk text have equal contrast.
   (function colourShift() {
     // The footer is a fixed forest plinth (styles.css) and is not a shift stop: when it
     // reaches mid-screen the page keeps the colour of the last block above it, so the
@@ -27,75 +28,78 @@ document.addEventListener('DOMContentLoaded', () => {
     const HEX  = { paper: '#F4EEE3', sand: '#E3C99A', sage: '#BFCCB2', brass: '#E2CB8A', gold: '#C8A54E', green: '#1F3B31', forest: '#152A22' };
     const TONE = { paper: 'light', sand: 'light', sage: 'light', brass: 'light', gold: 'gold', green: 'deep', forest: 'deep' };
     const meta = document.querySelector('meta[name="theme-color"]');
-    const LUM_SWITCH = 0.184; // ink #1C1A16 and chalk #F4EEE3 have equal contrast on this luminance
-    let io = null, raf = 0, current = '';
+    const LUM_SWITCH = 0.184;            // ink #1C1A16 and chalk #F4EEE3 have equal contrast here
+    const LUM_LO = 0.15, LUM_HI = 0.224; // between these neither text colour reaches 4.5:1, so the blend never rests there
+    let active = false, raf = 0, lastBg = '', lastTone = '';
 
-    function lum(rgb) {
-      const m = String(rgb).match(/[\d.]+/g);
-      if (!m || m.length < 3) return 1;
-      const c = m.slice(0, 3).map(v => { v = v / 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
-      return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
-    }
-    function apply(el, instant) {
-      const bg = el.getAttribute('data-bg');
-      if (!HEX[bg] || bg === current) return;
-      current = bg;
-      root.style.setProperty('--page-bg', HEX[bg]);
-      if (meta) meta.setAttribute('content', HEX[bg]);
-      const tone = TONE[bg];
-      cancelAnimationFrame(raf);
-      const from = root.getAttribute('data-tone');
-      if (from === tone) return;
-      if (instant) { root.setAttribute('data-tone', tone); return; }
-      // Follow the real tweening colour: into or out of a deep colour, flip the text
-      // when the background crosses the equal-contrast luminance (either direction).
-      // Light <-> gold keeps ink text; only secondary tokens swap, at mid-tween.
-      const t0 = performance.now();
-      const step = (now) => {
-        const t = now - t0;
-        let flip;
-        if (tone === 'deep' || from === 'deep') {
-          const L = lum(getComputedStyle(root).backgroundColor);
-          flip = tone === 'deep' ? L <= LUM_SWITCH : L >= LUM_SWITCH;
-        } else {
-          flip = t >= 350;
-        }
-        if (flip || t > 900) root.setAttribute('data-tone', tone);
-        else raf = requestAnimationFrame(step);
-      };
-      raf = requestAnimationFrame(step);
-    }
-    function atMiddle() {
-      const y = window.innerHeight / 2;
-      let above = null;
-      for (const s of secs) {
-        const r = s.getBoundingClientRect();
-        if (r.top <= y && r.bottom > y) return s;
-        if (r.top <= y) above = s; // midline in a gap (photo band) or in the footer
+    const toLin = (hex) => [1, 3, 5].map(i => { const v = parseInt(hex.substr(i, 2), 16) / 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+    const toHex = (lin) => '#' + lin.map(v => { v = v <= 0.0031308 ? v * 12.92 : 1.055 * Math.pow(v, 1 / 2.4) - 0.055; return Math.round(Math.min(1, Math.max(0, v)) * 255).toString(16).padStart(2, '0'); }).join('');
+    const lum = (c) => 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+    const LIN = {}; Object.keys(HEX).forEach(k => { LIN[k] = toLin(HEX[k]); });
+    const key = (el) => (HEX[el.getAttribute('data-bg')] ? el.getAttribute('data-bg') : 'paper');
+    const smooth = (p) => p * p * (3 - 2 * p);
+
+    // Which two colours are on screen, and how far the blend between them has got.
+    function blendState() {
+      const mid = window.innerHeight / 2;
+      const D = Math.max(window.innerHeight * 0.6, 280); // scroll distance one blend takes
+      const rs = secs.map(s => s.getBoundingClientRect());
+      let i = -1;
+      for (let k = 0; k < rs.length; k++) if (rs[k].top <= mid) i = k;
+      if (i < 0) return { a: key(secs[0]), b: key(secs[0]), p: 0 };
+      if (i > 0) { // finishing the blend into block i
+        const s0 = rs[i - 1].bottom - D / 2, e0 = rs[i].top + D / 2;
+        if (mid < e0) return { a: key(secs[i - 1]), b: key(secs[i]), p: (mid - s0) / (e0 - s0) };
       }
-      return above;
+      if (i + 1 < rs.length) { // starting the blend into block i + 1
+        const s1 = rs[i].bottom - D / 2, e1 = rs[i + 1].top + D / 2;
+        if (mid > s1) return { a: key(secs[i]), b: key(secs[i + 1]), p: (mid - s1) / (e1 - s1) };
+      }
+      return { a: key(secs[i]), b: key(secs[i]), p: 0 };
     }
+
+    function update() {
+      raf = 0;
+      const st = blendState();
+      const p = st.a === st.b ? 0 : smooth(Math.min(1, Math.max(0, st.p)));
+      const A = LIN[st.a], B = LIN[st.b];
+      const La = lum(A), Lb = lum(B);
+      let q = p, L = La + (Lb - La) * p; // luminance is linear in p when mixing in linear light
+      if (L > LUM_LO && L < LUM_HI && La !== Lb) { // jump across the low-contrast band
+        const edge = (L - LUM_LO) < (LUM_HI - L) ? LUM_LO : LUM_HI;
+        q = (edge - La) / (Lb - La); L = edge;
+      }
+      const bg = toHex(A.map((v, n) => v + (B[n] - v) * q));
+      const ta = TONE[st.a], tb = TONE[st.b];
+      let tone;
+      if (ta === tb) tone = ta;
+      else if (ta === 'deep' || tb === 'deep') tone = L < LUM_SWITCH ? 'deep' : (ta === 'deep' ? tb : ta);
+      else tone = q < 0.5 ? ta : tb;
+      if (bg !== lastBg) { lastBg = bg; root.style.setProperty('--page-bg', bg); if (meta) meta.setAttribute('content', bg); }
+      if (tone !== lastTone) { lastTone = tone; root.setAttribute('data-tone', tone); }
+    }
+    const schedule = () => { if (active && !raf) raf = requestAnimationFrame(update); };
+
     function on() {
-      if ((mqReduce && mqReduce.matches) || !('IntersectionObserver' in window)) return; // static mode
-      apply(atMiddle() || secs[0], true); // correct colour on first paint, incl. /#contact loads
+      if (mqReduce && mqReduce.matches) return; // static mode: each block paints itself
+      active = true;
+      update(); // correct colour on first paint, incl. /#contact loads
       root.classList.add('shift');
-      // a thin band across the middle; when it touches two blocks at once,
-      // the block that actually spans the midline wins
-      io = new IntersectionObserver(() => { const el = atMiddle(); if (el) apply(el, false); },
-        { rootMargin: '-50% 0px -49% 0px', threshold: 0 });
-      secs.forEach(s => io.observe(s));
-      requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('shift-ready'))); // no tween on load
+      window.addEventListener('scroll', schedule, { passive: true });
+      window.addEventListener('resize', schedule, { passive: true });
+      requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('shift-ready'))); // no fade on load
     }
     function off() {
-      if (io) io.disconnect();
-      io = null; cancelAnimationFrame(raf); current = '';
+      active = false; cancelAnimationFrame(raf); raf = 0; lastBg = ''; lastTone = '';
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
       root.classList.remove('shift', 'shift-ready'); root.removeAttribute('data-tone');
       root.style.removeProperty('--page-bg'); if (meta) meta.setAttribute('content', HEX.paper);
     }
     on();
     if (mqReduce && mqReduce.addEventListener) mqReduce.addEventListener('change', () => { off(); on(); });
     // after a hash jump the browser scrolls after DOMContentLoaded; re-sync once
-    window.addEventListener('load', () => { if (io) { const el = atMiddle(); if (el) { current = ''; apply(el, true); } } }, { once: true });
+    window.addEventListener('load', schedule, { once: true });
   })();
 
   // ---------- Current year ----------

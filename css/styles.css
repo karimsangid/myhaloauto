@@ -15,6 +15,13 @@
 @font-face{font-family:'Plex Sans Fallback';src:local('Arial Bold'),local('Arial-BoldMT');font-weight:600 900;size-adjust:96.99%;ascent-override:105.68%;descent-override:28.35%;line-gap-override:0%}
 @font-face{font-family:'Plex Mono Fallback';src:local('Courier New'),local('CourierNewPSMT');font-weight:100 900;size-adjust:99.98%;ascent-override:102.52%;descent-override:27.50%;line-gap-override:0%}
 
+/* tone tokens registered as colours so the colour shift can fade text between tones */
+@property --fg{syntax:'<color>';inherits:true;initial-value:#1C1A16}
+@property --fg-2{syntax:'<color>';inherits:true;initial-value:#1C1A16}
+@property --fg-accent{syntax:'<color>';inherits:true;initial-value:#1C1A16}
+@property --rule{syntax:'<color>';inherits:true;initial-value:#1C1A16}
+@property --btn2{syntax:'<color>';inherits:true;initial-value:#1C1A16}
+
 /* ---------- 1. Tokens ---------- */
 :root{
   /* surfaces: the colour-shift stops */
@@ -141,10 +148,12 @@ html.shift body{color:var(--fg)}
 html.shift [data-bg]{background-color:transparent}
 /* the footer is a fixed deep plinth: it can never reach mid-screen on tall viewports */
 html.shift .footer[data-bg]{background-color:var(--forest)}
-/* steep in-out curve: the colour spends little time near mid-luminance, where neither
-   ink nor chalk text has much contrast; main.js flips the text tone on the real colour */
-html.shift-ready,html.shift-ready body,html.shift-ready .navbar{transition:background-color .7s cubic-bezier(.75,0,.25,1)}
-/* in shift mode buttons swap colours instantly with the text tone (no blend against the moving page colour) */
+/* main.js sets the page colour on every scroll frame; this short fade only smooths
+   wheel steps. The tone tokens are registered colours (@property, top of file), so
+   text, rules and accents fade across with the background instead of flipping. */
+html.shift-ready body,html.shift-ready .navbar{transition:background-color .35s cubic-bezier(.25,.1,.25,1)}
+html.shift-ready{transition:background-color .35s cubic-bezier(.25,.1,.25,1),--fg .45s ease,--fg-2 .45s ease,--fg-accent .45s ease,--rule .45s ease,--btn2 .45s ease}
+/* in shift mode button shapes do not animate with the page colour */
 html.shift .btn{transition:transform 80ms linear,border-bottom-width 80ms linear}
 
 /* ---------- 4. Type ---------- */
@@ -544,7 +553,7 @@ html.shift .navbar{background-color:var(--page-bg);color:var(--fg)}
 .about__media{position:relative;padding-bottom:40px}
 .about__inset{position:absolute;right:-6%;bottom:-10%;width:38%;z-index:3}
 .about__inset .shot__img{border:8px solid var(--sec-bg,var(--sand))}
-html.shift .about__inset .shot__img{border-color:var(--page-bg);transition:border-color .7s cubic-bezier(.75,0,.25,1)}
+html.shift .about__inset .shot__img{border-color:var(--page-bg);transition:border-color .35s cubic-bezier(.25,.1,.25,1)}
 .about__text p{max-width:46ch}
 
 /* Gallery contact sheet */
